@@ -19,7 +19,7 @@ public class UpdateAppointment extends SQLCmd{
 	
 	public void queryDB(){
 		try{
-			String command = "UPDATE appointments SET description=?,studentid=? where id=?";
+			String command = "UPDATE APPOINTMENTS SET description=?,studentid=? where id=?";
 			PreparedStatement statement = conn.prepareStatement(command);
 			statement.setString(1, description);
 			statement.setString(2, studentid);

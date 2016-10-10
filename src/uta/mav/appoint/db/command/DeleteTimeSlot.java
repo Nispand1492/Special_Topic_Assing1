@@ -21,7 +21,7 @@ public class DeleteTimeSlot extends SQLCmd{
 	
 	public void queryDB(){
 		try{
-			String command = "DELETE a FROM advising_schedule a JOIN advisor_settings b ON a.userid=b.userid WHERE advising_date=? AND advising_starttime >=? AND advising_endtime <=?"
+			String command = "DELETE a FROM ADVISING_SCHEDULE a JOIN ADVISOR_SETTINGS b ON a.userid=b.userid WHERE advising_date=? AND advising_starttime >=? AND advising_endtime <=?"
 							+"AND b.pname=?";
 			PreparedStatement statement = conn.prepareStatement(command);
 			statement.setString(1,date);

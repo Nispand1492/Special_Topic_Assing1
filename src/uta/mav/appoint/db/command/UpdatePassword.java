@@ -16,7 +16,7 @@ public class UpdatePassword extends SQLCmd{
 	@Override
 	public void queryDB(){
 		try{
-			String command = "UPDATE user SET password = ? WHERE email = ?";
+			String command = "UPDATE USER SET password = ? WHERE email = ?";
 			System.out.println(newpassword+userId);
 			PreparedStatement statement = conn.prepareStatement(command);
 			statement.setString(1, newpassword);

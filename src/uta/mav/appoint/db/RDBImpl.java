@@ -83,25 +83,25 @@ public class RDBImpl implements DBImplInterface{
 	}
 	
 	public int addUser(GetSet set){
-		int check = 0;
-		Connection conn = this.connectDB();
-		PreparedStatement statement;
+//		int check = 0;
+//		Connection conn = this.connectDB();
+//		PreparedStatement statement;
 	//	String command = "INSERT INTO user VALUES('"+set.getStudentId()+"','"+set.getEmailAddress()+"','"+set.getPassword()+"',"+"'student')";
-		String command = "INSERT INTO user VALUES('1001163146','nispand.mehta@mavs.uta.edu','abcd','student')";
-		try {
-			statement = conn.prepareStatement(command);
-			statement.execute();
-			System.out.println("Data Inserted");
-			check = 1;
-			conn.close();
-		} catch (SQLException e) {
-			System.out.println("Exception : "+e);
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return check;
+//		String command = "INSERT INTO user VALUES('1001163146','nispand.mehta@mavs.uta.edu','abcd','student')";
+//		try {
+//			statement = conn.prepareStatement(command);
+//			statement.execute();
+//			System.out.println("Data Inserted");
+//			check = 1;
+//			conn.close();
+//		} catch (SQLException e) {
+//			System.out.println("Exception : "+e);
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//		return check;
 		
-		//return 1;
+		return 0;
 	}
 	
 	//using command pattern
@@ -127,8 +127,8 @@ public class RDBImpl implements DBImplInterface{
 			Connection conn = this.connectDB();
 			PreparedStatement statement;
 			if (name.equals("all")){
-			String command = "SELECT pname,advising_date,advising_starttime,advising_endtime,id FROM user,advising_schedule,advisor_settings "
-							+ "WHERE user.userid=advisor_settings.userid AND user.userid=advising_schedule.userid AND studentid is null";
+			String command = "SELECT pname,advising_date,advising_starttime,advising_endtime,id FROM USER,ADVISING_SCHEDULE,ADVISOR_SETTINGS "
+							+ "WHERE USER.userid=ADVISOR_SETTINGS.userid AND USER.userid=ADVISING_SCHEDULE.userid AND studentid is null";
 			statement = conn.prepareStatement(command);
 			}
 			else{
@@ -164,14 +164,14 @@ public class RDBImpl implements DBImplInterface{
 		try{
 			Connection conn = this.connectDB();
 			PreparedStatement statement;
-			String command = "SELECT userid from user where email=?";
+			String command = "SELECT userid from USER where email=?";
 			statement=conn.prepareStatement(command);
 			statement.setString(1,email);
 			ResultSet rs = statement.executeQuery();
 			while(rs.next()){
 				student_id = rs.getInt(1);
 			}
-			command = "SELECT userid FROM advisor_settings WHERE advisor_settings.pname=?";
+			command = "SELECT userid FROM ADVISOR_SETTINGS WHERE ADVISOR_SETTINGS.pname=?";
 			statement=conn.prepareStatement(command);
 			statement.setString(1, a.getPname());
 			rs = statement.executeQuery();
@@ -179,7 +179,7 @@ public class RDBImpl implements DBImplInterface{
 				advisor_id = rs.getInt(1);
 			}
 			//check for slots already taken
-			command = "SELECT COUNT(*) FROM advising_schedule WHERE userid=? AND advising_date=? AND advising_starttime=? AND advising_endtime=? AND studentid is not null";
+			command = "SELECT COUNT(*) FROM ADVISING_SCHEDULE WHERE userid=? AND advising_date=? AND advising_starttime=? AND advising_endtime=? AND studentid is not null";
 			statement = conn.prepareStatement(command);
 			statement.setInt(1, advisor_id);
 			statement.setString(2, a.getAdvisingDate());
@@ -188,7 +188,7 @@ public class RDBImpl implements DBImplInterface{
 			rs = statement.executeQuery();
 			while(rs.next()){
 				if (rs.getInt(1) < 1){
-					command = "INSERT INTO appointments (id,advisor_userid,student_userid,advising_date,advising_starttime,advising_endtime,appointment_type,studentid,description,student_email)"
+					command = "INSERT INTO APPOINTMENTS (id,advisor_userid,student_userid,advising_date,advising_starttime,advising_endtime,appointment_type,studentid,description,student_email)"
 							+"VALUES(?,?,?,?,?,?,?,?,?,?)";
 					statement = conn.prepareStatement(command);
 					statement.setInt(1, a.getAppointmentId());
@@ -202,7 +202,7 @@ public class RDBImpl implements DBImplInterface{
 					statement.setString(9,a.getDescription());
 					statement.setString(10,email);
 					statement.executeUpdate();
-					command = "UPDATE advising_schedule SET studentid=? where userid=? AND advising_date=? and advising_starttime >= ? and advising_endtime <= ?";
+					command = "UPDATE ADVISING_SCHEDULE SET studentid=? where userid=? AND advising_date=? and advising_starttime >= ? and advising_endtime <= ?";
 					statement=conn.prepareStatement(command);
 					statement.setInt(1,Integer.parseInt(a.getStudentid()));
 					statement.setInt(2, advisor_id);
@@ -226,8 +226,8 @@ public class RDBImpl implements DBImplInterface{
 		try{
 			Connection conn = this.connectDB();
 			PreparedStatement statement;
-			String command = "SELECT advisor_settings.pname,advisor_settings.email,advising_date,advising_starttime,advising_endtime,appointment_type,id,appointments.description,studentid,appointments.student_email FROM USER,APPOINTMENTS,ADVISOR_SETTINGS "
-						+ "WHERE USER.email=? AND user.userid=appointments.advisor_userid AND advisor_settings.userid=appointments.advisor_userid";
+			String command = "SELECT ADVISOR_SETTINGS.pname,ADVISOR_SETTINGS.email,advising_date,advising_starttime,advising_endtime,appointment_type,id,APPOINTMENTS.description,studentid,APPOINTMENTS.student_email FROM USER,APPOINTMENTS,ADVISOR_SETTINGS "
+						+ "WHERE USER.email=? AND USER.userid=APPOINTMENTS.advisor_userid AND ADVISOR_SETTINGS.userid=APPOINTMENTS.advisor_userid";
 			statement = conn.prepareStatement(command);
 			statement.setString(1, user.getEmail());
 			ResultSet rs = statement.executeQuery();
@@ -259,8 +259,8 @@ public class RDBImpl implements DBImplInterface{
 		try{
 			Connection conn = this.connectDB();
 			PreparedStatement statement;
-			String command = "SELECT advisor_settings.pname,advisor_settings.email,advising_date,advising_starttime,advising_endtime,appointment_type,id,description,student_email FROM USER,APPOINTMENTS,ADVISOR_SETTINGS "
-						+ "WHERE USER.email=? AND user.userid=appointments.student_userid AND advisor_settings.userid=appointments.advisor_userid";
+			String command = "SELECT ADVISOR_SETTINGS.pname,ADVISOR_SETTINGS.email,advising_date,advising_starttime,advising_endtime,appointment_type,id,description,student_email FROM USER,APPOINTMENTS,ADVISOR_SETTINGS "
+						+ "WHERE USER.email=? AND USER.userid=APPOINTMENTS.student_userid AND ADVISOR_SETTINGS.userid=APPOINTMENTS.advisor_userid";
 			statement = conn.prepareStatement(command);
 			statement.setString(1, user.getEmail());
 			ResultSet rs = statement.executeQuery();
@@ -292,8 +292,8 @@ public class RDBImpl implements DBImplInterface{
 		try{
 			Connection conn = this.connectDB();
 			PreparedStatement statement;
-			String command = "SELECT advisor_settings.pname,advisor_settings.email,advising_date,advising_starttime,advising_endtime,appointment_type,id FROM appointments INNER JOIN advisor_settings "
-						+"WHERE advisor_settings.userid = appointments.advisor_userid";
+			String command = "SELECT ADVISOR_SETTINGS.pname,ADVISOR_SETTINGS.email,advising_date,advising_starttime,advising_endtime,appointment_type,id FROM APPOINTMENTS INNER JOIN ADVISOR_SETTINGS "
+						+"WHERE ADVISOR_SETTINGS.userid = APPOINTMENTS.advisor_userid";
 			statement = conn.prepareStatement(command);
 			ResultSet rs = statement.executeQuery();
 			while(rs.next()){
@@ -321,17 +321,17 @@ public class RDBImpl implements DBImplInterface{
 		try{
 			Connection conn = this.connectDB();
 			PreparedStatement statement;
-			String command = "SELECT count(*),advising_date,advising_starttime, advising_endtime from appointments where id=?";
+			String command = "SELECT count(*),advising_date,advising_starttime, advising_endtime from APPOINTMENTS where id=?";
 			statement=conn.prepareStatement(command);
 			statement.setInt(1,id);
 			ResultSet rs = statement.executeQuery();
 			while(rs.next()){
 				if (rs.getInt(1) == 1){
-					command = "DELETE FROM appointments where id=?";
+					command = "DELETE FROM APPOINTMENTS where id=?";
 					statement=conn.prepareStatement(command);
 					statement.setInt(1, id);
 					statement.executeUpdate();
-					command = "UPDATE advising_schedule SET studentid=null where advising_date=? AND advising_starttime >=? AND advising_endtime <=?";
+					command = "UPDATE ADVISING_SCHEDULE SET studentid=null where advising_date=? AND advising_starttime >=? AND advising_endtime <=?";
 					statement=conn.prepareStatement(command);
 					statement.setString(1, rs.getString(2));
 					statement.setString(2,rs.getString(3));
@@ -370,7 +370,7 @@ public class RDBImpl implements DBImplInterface{
 			try{
 			Connection conn = this.connectDB();
 			PreparedStatement statement;
-			String command = "SELECT type,duration,user.email FROM  appointment_types,advisor_settings,user WHERE appointment_types.userid=advisor_settings.userid AND advisor_settings.userid=user.userid AND advisor_settings.pname=?";
+			String command = "SELECT type,duration,USER.email FROM  APPOINTMENT_TYPES,ADVISOR_SETTINGS,USER WHERE APPOINTMENT_TYPES.userid=ADVISOR_SETTINGS.userid AND ADVISOR_SETTINGS.userid=USER.userid AND ADVISOR_SETTINGS.pname=?";
 			statement = conn.prepareStatement(command);
 			statement.setString(1,pname);
 			ResultSet rs = statement.executeQuery();

@@ -13,7 +13,7 @@ public class GetUserID extends SQLCmd{
 	@Override
 	public void queryDB() {
 		try{
-			String command = "SELECT userid FROM user WHERE email=?";
+			String command = "SELECT userid FROM USER WHERE email=?";
 			PreparedStatement statement = conn.prepareStatement(command);
 			statement.setString(1,email);
 			res = statement.executeQuery();

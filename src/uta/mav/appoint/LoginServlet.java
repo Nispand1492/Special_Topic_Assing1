@@ -51,6 +51,7 @@ public class LoginServlet extends HttpServlet {
 				response.sendRedirect("index");
 			}
 			else{
+				System.out.print("Login Failed.");
 				//redirect back to login if authentication fails
 				//need to add a "invalid username or password" response
 				response.sendRedirect("login");

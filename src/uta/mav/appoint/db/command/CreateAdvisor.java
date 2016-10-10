@@ -22,7 +22,7 @@ public class CreateAdvisor extends SQLCmd{
 	@Override
 	public void queryDB() {
 		try{
-			String command = "INSERT INTO user (email,password,role,validated)"
+			String command = "INSERT INTO USER (email,password,role,validated)"
 							+" values(?,?,?,?)";
 			PreparedStatement statement = conn.prepareStatement(command);
 			statement.setString(1,email);
