@@ -20,5 +20,7 @@
 		</div>
 	</div>
 	</div>
-	<button type="submit" class="btn btn-primary">Submit</button></p>	
+	<p><button type="submit" class="btn btn-primary">Submit</button></p>
+	</form>
+	</div>	
 <%@include file="templates/footer.jsp"%>

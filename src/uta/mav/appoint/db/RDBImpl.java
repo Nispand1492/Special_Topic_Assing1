@@ -39,9 +39,9 @@ public class RDBImpl implements DBImplInterface{
 		try
 	    {
 	    Class.forName("com.mysql.jdbc.Driver").newInstance();
-	    String jdbcUrl = "jdbc:mysql://localhost:3306/mavappointdb";
+	    String jdbcUrl = "jdbc:mysql://specialtopics.ciofydptdlh0.us-west-2.rds.amazonaws.com:3306/mavappointdb";
 	    String userid = "root";
-	    String password = "1234";
+	    String password = "12345678";
 	    Connection conn = DriverManager.getConnection(jdbcUrl,userid,password);
 	    return conn;
 	    }
@@ -83,12 +83,25 @@ public class RDBImpl implements DBImplInterface{
 	}
 	
 	public int addUser(GetSet set){
-		/*int check = 0;
-		Connection conn = DatabaseManager.ConnectDB();
-		String command = "INSERT INTO USER (email,password,role) VALUES(email=?,password=?,role=?)";
+		int check = 0;
+		Connection conn = this.connectDB();
+		PreparedStatement statement;
+	//	String command = "INSERT INTO user VALUES('"+set.getStudentId()+"','"+set.getEmailAddress()+"','"+set.getPassword()+"',"+"'student')";
+		String command = "INSERT INTO user VALUES('1001163146','nispand.mehta@mavs.uta.edu','abcd','student')";
+		try {
+			statement = conn.prepareStatement(command);
+			statement.execute();
+			System.out.println("Data Inserted");
+			check = 1;
+			conn.close();
+		} catch (SQLException e) {
+			System.out.println("Exception : "+e);
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return check;
-		*/
-		return 0;
+		
+		//return 1;
 	}
 	
 	//using command pattern

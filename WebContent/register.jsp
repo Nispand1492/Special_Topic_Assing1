@@ -1,4 +1,4 @@
-<%@include file="templates/header.jsp"%>
+<%@include file="/jsp/views/templates/header.jsp"%>
 	<div class="container">
 	<form action="register" method="post">
 	<div class="row">
@@ -20,5 +20,6 @@
 		</div>
 	</div>
 	</div>
-	<button type="submit" class="btn btn-primary">Submit</button></p>	
-<%@include file="templates/footer.jsp"%>
+	<button type="submit" class="btn btn-primary">Submit</button></p>
+	</form>	
+<%@include file="/jsp/views/templates/footer.jsp"%>

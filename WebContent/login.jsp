@@ -1,4 +1,4 @@
-<%@ include file="templates/header.jsp" %>
+<%@ include file="/jsp/views/templates/header.jsp" %>
 <script type=text/javascript>
 	tday=new Array("Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday");
 	tmonth=new Array("January","February","March","April","May","June","July","August","September","October","November","December");
@@ -127,4 +127,4 @@ color:#FF3300 !important;
 	</div>
 
 
-<%@ include file="templates/footer.jsp" %>
+<%@ include file="/jsp/views/templates/footer.jsp" %>

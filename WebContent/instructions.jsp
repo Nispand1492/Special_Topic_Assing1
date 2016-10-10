@@ -1,4 +1,4 @@
-<%@include file="templates/header.jsp"%>
+<%@include file="/jsp/views/templates/header.jsp"%>
 	<div class="container">
 	<form action="#" method="post">
 			<div class="form-group">
@@ -25,4 +25,4 @@
 	font-size:24px;
 	}
 	</style>
-<%@include file="templates/footer.jsp"%>
+<%@include file="/jsp/views/templates/footer.jsp"%>

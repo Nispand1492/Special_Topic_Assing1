@@ -19,6 +19,7 @@ public class RegisterServlet extends HttpServlet {
 	String email;
 	String password;
 	String rpassword;
+	String userid;
 	HttpSession session;
 	String role;
 	/**
@@ -29,14 +30,17 @@ public class RegisterServlet extends HttpServlet {
 	}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		userid = request.getParameter("userid");
 		email = request.getParameter("emailAddress");
 		password = request.getParameter("password");
 		rpassword = request.getParameter("repeatPassword");
 		role = "student";
+		
 		//need to add check for maverick email address
 		//need to add check that both passwords match
 		//need to redirect back to register with correct error message
 		GetSet set = new GetSet();
+		set.setStudentId(userid);
 		set.setEmailAddress(email);
 		set.setPassword(password);
 		set.setRole(role);
@@ -44,8 +48,9 @@ public class RegisterServlet extends HttpServlet {
 			DatabaseManager dbm = new DatabaseManager();
 			int check = dbm.addUser(set);
 			if (check == 1){
-				//if adduser successful, log in as added user and redirect
+				//if add user successful, log in as added user and redirect
 				//back to start
+				System.out.println("User added");
 				session.setAttribute("role", "1");
 				session.setAttribute("emailAddress", email);
 				response.sendRedirect("index");
@@ -58,6 +63,8 @@ public class RegisterServlet extends HttpServlet {
 		}
 		catch(Exception e){
 			
+			request.setAttribute("error","Unable to add user in exception");
+			request.getRequestDispatcher("register").forward(request,response);
 		}
 		
 	}

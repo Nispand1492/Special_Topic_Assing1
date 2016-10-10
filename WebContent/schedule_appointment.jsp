@@ -165,4 +165,4 @@
 		setInterval(GetClock,1000);
 		}
 </script>
-<%@include file="templates/footer.jsp" %>
+<%@include file="/jsp/views/templates/footer.jsp" %>

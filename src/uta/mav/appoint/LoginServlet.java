@@ -45,7 +45,8 @@ public class LoginServlet extends HttpServlet {
 			//an integer indicating a role
 			DatabaseManager dbm = new DatabaseManager();
 			LoginUser user = dbm.checkUser(sets);
-			if(user != null){
+			if(user != null)
+			{
 				session.setAttribute("user", user);
 				response.sendRedirect("index");
 			}

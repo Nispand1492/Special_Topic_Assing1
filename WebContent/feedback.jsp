@@ -1,4 +1,4 @@
-<%@include file="templates/header.jsp"%>
+<%@include file="/jsp/views/templates/header.jsp"%>
 	<div class="container">
 	<form action="FeedBack" method="post">
 	<div class="row">
@@ -58,4 +58,4 @@
 	color:#FFFFFF;
 	}
 	</style>
-<%@include file="templates/footer.jsp"%>
+<%@include file="/jsp/views/templates/footer.jsp"%>
