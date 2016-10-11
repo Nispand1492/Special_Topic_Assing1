@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- WARNING: Eclipse auto-generated file.
+              Any modifications will be overwritten.
+              To include a user specific buildfile here, simply create one in the same
+              directory with the processing instruction <?eclipse.ant.import?>
+              as the first entry and export the buildfile again. --><project basedir="." default="build" name="MavAppoint">
+    <property environment="env"/>
+    <property name="debuglevel" value="source,lines,vars"/>
+    <property name="target" value="1.7"/>
+    <property name="source" value="1.7"/>
+    <path id="Apache Tomcat v7.0 [Apache Tomcat v7.0].libraryclasspath">
+        <pathelement location="C:/tomcat7/apache-tomcat-7.0.72/lib/annotations-api.jar"/>
+        <pathelement location="C:/tomcat7/apache-tomcat-7.0.72/lib/catalina-ant.jar"/>
+        <pathelement location="C:/tomcat7/apache-tomcat-7.0.72/lib/catalina-ha.jar"/>
+        <pathelement location="C:/tomcat7/apache-tomcat-7.0.72/lib/catalina-tribes.jar"/>
+        <pathelement location="C:/tomcat7/apache-tomcat-7.0.72/lib/catalina.jar"/>
+        <pathelement location="C:/tomcat7/apache-tomcat-7.0.72/lib/ecj-4.4.2.jar"/>
+        <pathelement location="C:/tomcat7/apache-tomcat-7.0.72/lib/el-api.jar"/>
+        <pathelement location="C:/tomcat7/apache-tomcat-7.0.72/lib/jasper-el.jar"/>
+        <pathelement location="C:/tomcat7/apache-tomcat-7.0.72/lib/jasper.jar"/>
+        <pathelement location="C:/tomcat7/apache-tomcat-7.0.72/lib/jsp-api.jar"/>
+        <pathelement location="C:/tomcat7/apache-tomcat-7.0.72/lib/servlet-api.jar"/>
+        <pathelement location="C:/tomcat7/apache-tomcat-7.0.72/lib/tomcat-api.jar"/>
+        <pathelement location="C:/tomcat7/apache-tomcat-7.0.72/lib/tomcat-coyote.jar"/>
+        <pathelement location="C:/tomcat7/apache-tomcat-7.0.72/lib/tomcat-dbcp.jar"/>
+        <pathelement location="C:/tomcat7/apache-tomcat-7.0.72/lib/tomcat-i18n-es.jar"/>
+        <pathelement location="C:/tomcat7/apache-tomcat-7.0.72/lib/tomcat-i18n-fr.jar"/>
+        <pathelement location="C:/tomcat7/apache-tomcat-7.0.72/lib/tomcat-i18n-ja.jar"/>
+        <pathelement location="C:/tomcat7/apache-tomcat-7.0.72/lib/tomcat-jdbc.jar"/>
+        <pathelement location="C:/tomcat7/apache-tomcat-7.0.72/lib/tomcat-util.jar"/>
+        <pathelement location="C:/tomcat7/apache-tomcat-7.0.72/lib/tomcat7-websocket.jar"/>
+        <pathelement location="C:/tomcat7/apache-tomcat-7.0.72/lib/websocket-api.jar"/>
+    </path>
+    <path id="JUnit 4.libraryclasspath">
+        <pathelement location="C:/Users/Nispand/.p2/pool/plugins/org.junit_4.12.0.v201504281640/junit.jar"/>
+        <pathelement location="C:/Users/Nispand/.p2/pool/plugins/org.hamcrest.core_1.3.0.v201303031735.jar"/>
+    </path>
+    <path id="Maven Dependencies.libraryclasspath"/>
+    <path id="MavAppoint.classpath">
+        <pathelement location="target/classes"/>
+        <path refid="Apache Tomcat v7.0 [Apache Tomcat v7.0].libraryclasspath"/>
+        <path refid="JUnit 4.libraryclasspath"/>
+        <pathelement location="Testing/selenium-server-standalone-2.42.2.jar"/>
+        <pathelement location="WEB-INF/lib/mysql-connector-java-5.1.32-bin.jar"/>
+        <pathelement location="lib/httpcore-4.3.1.jar"/>
+        <pathelement location="lib/mail.jar"/>
+        <pathelement location="lib/selenium-java-2.42.2.jar"/>
+        <pathelement location="lib/activation.jar"/>
+        <pathelement location="lib/apache-mime4j-0.6.jar"/>
+        <pathelement location="lib/bsh.jar"/>
+        <pathelement location="lib/commons-io-2.4.jar"/>
+        <pathelement location="lib/commons-lang-2.4-sources.jar"/>
+        <pathelement location="lib/cssparser-0.9.5.jar"/>
+        <pathelement location="lib/guava.jar"/>
+        <pathelement location="lib/hamcrest-core-1.3.jar"/>
+        <pathelement location="lib/hamcrest-library-1.3.jar"/>
+        <pathelement location="lib/htmlunit-core-js-2.9.jar"/>
+        <pathelement location="lib/httpclient-cache-4.3.2.jar"/>
+        <pathelement location="lib/httpcore.jar"/>
+        <pathelement location="lib/httpmime-4.3.jar"/>
+        <pathelement location="lib/ini4j-0.5.1.jar"/>
+        <pathelement location="lib/jcommander.jar"/>
+        <pathelement location="lib/jetty-websocket-8.0.0.v20110901.jar"/>
+        <pathelement location="lib/jna-3.2.3.jar"/>
+        <pathelement location="lib/jna-platform-3.4.0.jar"/>
+        <pathelement location="lib/json-20080701-sources.jar"/>
+        <pathelement location="lib/junit-dep-4.10.jar"/>
+        <pathelement location="lib/nekohtml.jar"/>
+        <pathelement location="lib/net.sourceforge.htmlunit-all-2.8.w1.jar"/>
+        <pathelement location="lib/netty-3.5.7.Final.jar"/>
+        <pathelement location="lib/operadriver-1.5.jar"/>
+        <pathelement location="lib/org-apache-commons-codec.jar"/>
+        <pathelement location="lib/org.apache.commons.collections.jar"/>
+        <pathelement location="lib/org.apache.commons.logging-1.1.1.jar"/>
+        <pathelement location="lib/phantomjsdriver-1.0.1.jar"/>
+        <pathelement location="lib/protobuf-java-2.4.1.jar"/>
+        <pathelement location="lib/sac-1.3.jar"/>
+        <pathelement location="lib/selenium-server-standalone-2.42.2.jar"/>
+        <pathelement location="lib/serializer-2.7.1.jar"/>
+        <pathelement location="lib/commons-exec-1.3.jar"/>
+        <pathelement location="lib/commons-jxpath-1.3.jar"/>
+        <pathelement location="lib/testng-6.8.5.jar"/>
+        <pathelement location="lib/xalan-2.7.1-sources.jar"/>
+        <pathelement location="lib/xercesImpl.jar"/>
+        <pathelement location="lib/xml-apis-1.4.01.jar"/>
+        <pathelement location="lib/cglib-nodep-2.1.3.jar"/>
+        <pathelement location="lib/htmlunit-2.14.jar"/>
+        <path refid="Maven Dependencies.libraryclasspath"/>
+    </path>
+    <target name="init">
+        <mkdir dir="target/classes"/>
+        <copy includeemptydirs="false" todir="target/classes">
+            <fileset dir="src">
+                <exclude name="**/*.launch"/>
+                <exclude name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="clean">
+        <delete dir="target/classes"/>
+    </target>
+    <target depends="clean" name="cleanall"/>
+    <target depends="build-subprojects,build-project" name="build"/>
+    <target name="build-subprojects"/>
+    <target depends="init" name="build-project">
+        <echo message="${ant.project.name}: ${ant.file}"/>
+        <javac debug="true" debuglevel="${debuglevel}" destdir="target/classes" includeantruntime="false" source="${source}" target="${target}">
+            <src path="src"/>
+            <classpath refid="MavAppoint.classpath"/>
+        </javac>
+    </target>
+    <target description="Build all projects which reference this project. Useful to propagate changes." name="build-refprojects"/>
+</project>
